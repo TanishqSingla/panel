@@ -1,25 +1,27 @@
-const express = require('express');
-const path = require('path')
+const express = require("express");
+const path = require("path");
 
 const app = express();
 
 //mock db
-const data = [];
+const data = { addCount: 0, updateCount: 0 };
 
-app.use('/public', express.static(path.join(__dirname + '/public')));
+app.use("/public", express.static(path.join(__dirname + "/public")));
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/index.html'));
-})
-
-app.post('/add', (req, res) => {
-  const response = {message: 'add'}
-  res.status(200).json(response)
+app.get("/", (req, res) => {
+	res.sendFile(path.join(__dirname, "/index.html"));
 });
 
-app.post('/update', (req, res) => {
-  const response = {message: 'update'}
-  res.status(200).json(response)
-})
+app.post("/add", (req, res) => {
+	data.addCount++;
+	const response = { message: "add", updateCount };
+	res.status(200).json(response);
+});
 
-app.listen(5000, () => console.log('Server listening on port 5000'))
+app.post("/update", (req, res) => {
+	data.updateCount++;
+	const response = { message: "update", updateCount };
+	res.status(200).json(response);
+});
+
+app.listen(3000, () => console.log("Server listening on port 5000"));
