@@ -1,12 +1,13 @@
 const addButton = document.getElementById("add-button");
 const updateButton = document.getElementById("update-button");
 const horizontalSlider = document.getElementById("horizontal-slider");
+const verticalSlider = document.getElementById('vertical-slider');
 
 const window1 = document.getElementById("window1");
 const window2 = document.getElementById("window2");
-const window3 = document.getElementById("window3");
+const upperPanel = document.getElementById("upper-panel");
 
-let x, currentWidth;
+let x, y, currentWidth, currentHeight;
 
 function horizontalResize(e) {
 	let difference = e.clientX - x;
@@ -18,15 +19,20 @@ horizontalSlider.addEventListener("mousedown", (e) => {
 	window.addEventListener("mousemove", horizontalResize);
 });
 
-function verticalScroll(e) {
-	y = e.clientY;
-	currentHeight = window3.offsetHeight;
-	window.addEventListener('mousemove', verticalResize);
+
+function verticalResize(e) {
+	let difference = e.clientY - y;
+	upperPanel.style.height = `${currentHeight + difference}px`;
 }
+verticalSlider.addEventListener('mousedown', (e) => {
+	y = e.clientY;
+	currentHeight = upperPanel.offsetHeight;
+	window.addEventListener('mousemove', verticalResize);
+})
 
 window.addEventListener("mouseup", () => {
 	window.removeEventListener("mousemove", horizontalResize);
-	window.removeEventListener('mousemove', verticalScroll);
+	window.removeEventListener('mousemove', verticalResize);
 });
 
 // api calls
