@@ -21,7 +21,7 @@ main {
 }
 
 .window {
-  border-radius: 15px;
+  border-radius: 16px;
 }
 
 .upper-panel {
@@ -38,10 +38,10 @@ main {
 }
 
 #window1{
-  width: 25%;
+  width: 320px
 }
 #window2 {
-  width: 75%;
+  flex-grow: 1;
 }
 #window3 {
   min-height: 100%;

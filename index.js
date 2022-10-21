@@ -14,13 +14,13 @@ app.get("/", (req, res) => {
 
 app.post("/add", (req, res) => {
 	data.addCount++;
-	const response = { message: "add", updateCount };
+	const response = { message: "add", updateCount: data.addCount };
 	res.status(200).json(response);
 });
 
 app.post("/update", (req, res) => {
 	data.updateCount++;
-	const response = { message: "update", updateCount };
+	const response = { message: "update", updateCount: data.updateCount };
 	res.status(200).json(response);
 });
 
