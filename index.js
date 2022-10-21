@@ -24,4 +24,4 @@ app.post("/update", (req, res) => {
 	res.status(200).json(response);
 });
 
-app.listen(3000, () => console.log("Server listening on port 5000"));
+app.listen(5000, () => console.log("Server listening on port 5000"));
